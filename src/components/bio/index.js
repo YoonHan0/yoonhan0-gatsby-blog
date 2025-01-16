@@ -3,6 +3,7 @@ import ReactRotatingText from 'react-rotating-text';
 import IconButtonBar from '../icon-button-bar';
 import Image from '../image';
 import './style.scss';
+import TextButtonBar from '../icon-button-bar/TextButtonBar';
 
 function Bio({ author, language = 'ko' }) {
   if (!author) return null;
@@ -20,7 +21,8 @@ function Bio({ author, language = 'ko' }) {
             <br />
           </p>
           <div className="social-links">
-            <IconButtonBar links={social} />
+            {/* <IconButtonBar links={social} /> */}  {/* 아이콘 형태의 버튼 */}
+            <TextButtonBar links={social} />          {/* 텍스트 형태의 버튼 */}
           </div>
         </div>
       ) : (

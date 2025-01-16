@@ -16,7 +16,7 @@ function CategoryTemplate({ pageContext }) {
     [categories, currentCategory],
   );
   const posts = edges.map(({ node }) => new Post(node));
-
+  const [moreBtn, setMoreBtn] = useState(true);
   const onTabIndexChange = useCallback(
     (e, value) => {
       if (value === 0) return navigate(`/posts`);
@@ -38,8 +38,9 @@ function CategoryTemplate({ pageContext }) {
         onChange={onTabIndexChange}
         tabs={categories}
         posts={posts}
-        showMoreButton={currentCategory !== 'All'}
+        showMoreButton={currentCategory !== 'All' && moreBtn}
         seoTitle={seoTitle}
+        setMoreBtn={setMoreBtn}
       />
     </Layout>
   );
