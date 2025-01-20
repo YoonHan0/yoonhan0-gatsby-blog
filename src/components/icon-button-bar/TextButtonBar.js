@@ -12,7 +12,7 @@ function TextButtonBar({ links = {} }) {
       case 'demo':
         return 'Demo';
       case 'github':
-        return 'GitHub';
+        return 'GITHUB';
       case 'googlePlay':
         return 'Google Play';
       case 'appStore':
@@ -22,7 +22,7 @@ function TextButtonBar({ links = {} }) {
       case 'linkedIn':
         return 'LinkedIn';
       case 'velog':
-        return 'Velog';
+        return 'VELOG';
       default:
         return '';
     }
@@ -33,7 +33,7 @@ function TextButtonBar({ links = {} }) {
       {Object.keys(links).map((link, index) => {
         return (
           links[link] && (
-            <Tooltip key={index} title={link} arrow className="link-tooltip">
+            <Tooltip key={index} arrow className="link-tooltip">
               <Button
                 size="small"
                 href={`${link === 'email' ? `mailto:` : ``}${links[link]}`}

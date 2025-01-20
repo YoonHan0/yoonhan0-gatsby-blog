@@ -39,6 +39,7 @@ function PostTabs({ tabIndex, onChange, tabs, posts, showMoreButton, seoTitle, s
         showMoreButton={showMoreButton && tabPosts.length > 4}
         moreUrl={`posts/${tabIndex === 0 ? '' : tabs[tabIndex]}`}
         setMoreBtn={setMoreBtn}
+        seoTitle={seoTitle}
       />
     </div>
   );

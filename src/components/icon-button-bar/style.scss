@@ -9,3 +9,24 @@
     font-size: 30px;
     color: var(--bio-link-icon-color);
 }
+
+.link-button-bar {
+  display: flex;
+  gap: 10px; /* 아이템 간격 조정 */
+  flex-wrap: wrap; /* 화면에 맞게 버튼들이 자동으로 줄바꿈되도록 설정 */
+  margin-top: 20px;
+}
+
+.link-button {
+  text-transform: none; /* 텍스트 대소문자 자동 변환 방지 */
+  font-size: 18px !important; /* 글자 크기 강제 적용 */
+  color: black !important; /* 글자 색상 강제 적용 */
+}
+.link-button:hover {
+    color: gray; /* hover 시 색상 변경 */
+    background-color: transparent !important; /* hover 시 배경색 투명 유지 */
+  }
+
+.link-tooltip {
+  font-size: 12px; /* 툴팁 텍스트 크기 조정,tooltip 사용하려면 컴포넌트의 props로 title={link} 해줘야함 */
+}

@@ -19,8 +19,9 @@
   }
 
   .categories {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 5px;
-
     .category {
       margin-right: 4px;
       font-weight: 600;

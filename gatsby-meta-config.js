@@ -14,7 +14,7 @@ module.exports = {
     name: `윤한영`,
     bio: {
       role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
+      description: ['비즈니스 로직을 이해하는', '사람에 가치를 두는', '능동적으로 일하는'],
       thumbnail: '103.png', // assets 폴더 내에 이미지를 넣고 출력하고 싶은 이미지 기재
     },
     social: {

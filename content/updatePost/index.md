@@ -1,7 +1,7 @@
 ---
 emoji: ✍️
 title: 코드 수정 필요한 내용 정리
-date: '2025-01-13 11:30:00'
+date: '2025-01-20 17:30:00'
 author: 윤한영
 tags: blog gatsby theme 개츠비 테마
 categories: 블로그 featured 테스트2 테스트3 테스트4 테스트5 테스트6 테스트7 테스트8 테스트9 테스트10 테스트11 테스트12 테스트13 테스트14
@@ -12,14 +12,14 @@ categories: 블로그 featured 테스트2 테스트3 테스트4 테스트5 테�
 1. 메인페이지의 카데고리 제거, post에서만 카테고리 표시
 2. 메인페이지에서 사용되던 more 버튼 제거, post 중 All을 제외한 카테고리에서 사용
 3. posts에서 확인되는 글 목록에서 태그가 여러 건이 됐을 때 그리드 깨짐![post-tag-list-error](post-tag-list-error.png)태그가 5개 이상이 되면 `...` 처리하도록 수정![post-tag-list-answer](post-tag-list-answer.png)
-
+4. 태그가 여러 건이 있을 때 글 내부에서 그리드 깨짐
+![post-tag-description-error](post-tag-description-error.png)</br></br>화면 끝에 다다르면 다음 줄로 정렬되도록 수정![post-tag-description-answer](post-tag-description-answer.png)
 
 </br>
 
 ## 📚 수정이 필요한 내용
 
-2. 태그가 여러 건이 있을 때 글 내부에서 그리드 깨짐
-![post-tag-description-error](post-tag-description-error.png)
+
 
 
 </br>
