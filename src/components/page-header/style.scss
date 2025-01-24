@@ -11,6 +11,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 14px 0px;
+    position: fixed;
+    background-color: #fff; /* 흰색 배경 */
+    z-index: 1000; /* 다른 요소 위에 보이도록 설정 */
     @include content-max-width;
 
     .link {

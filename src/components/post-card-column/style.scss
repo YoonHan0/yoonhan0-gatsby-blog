@@ -6,7 +6,16 @@
 
   .post-card-column-title {
     font-size: 27px; /* 원하는 크기로 조정 */
-    font-weight: bold; /* 강조 스타일 */
+    font-family: 'Roboto', 'Apple SD Gothic Neo', sans-serif;
+    // font-weight: bold; /* 강조 스타일 */
+    margin-bottom: 15px; /* 아래 요소와 간격 조정 */
+    text-align: left;
+    width: 100%; /* 부모 요소의 전체 너비 사용 */
+  }
+
+  .post-card-column-title1 {
+    font-size: 27px; /* 원하는 크기로 조정 */
+    // font-weight: bold; /* 강조 스타일 */
     margin-bottom: 15px; /* 아래 요소와 간격 조정 */
     text-align: left;
     width: 100%; /* 부모 요소의 전체 너비 사용 */
@@ -17,6 +26,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-bottom: 30px;
 
     .post-card-wrapper {
       margin-bottom: 10px;
