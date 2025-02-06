@@ -9,7 +9,7 @@ function PostTabs({ tabIndex, onChange, tabs, posts, showMoreButton, seoTitle, s
     if (tabs[tabIndex] === 'All') return posts;
     return posts.filter((post) => post.categories.includes(tabs[tabIndex]));
   }, [posts, tabs, tabIndex]);
-
+  console.log("### 데이터 확엔 post ### \n", posts);
   console.log("### 태그, 포스터 목록 컴포넌트 tabIndex 확인 ### \n", tabIndex, `posts/${tabIndex === 0 ? '' : tabs[tabIndex]}`);
 
   return (

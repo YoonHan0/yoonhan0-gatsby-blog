@@ -22,7 +22,7 @@ function Bio({ author, language = 'ko' }) {
           </p>
           <div className="social-links">
             {/* <IconButtonBar links={social} /> */}  {/* 아이콘 형태의 버튼 */}
-            <TextButtonBar links={social} />          {/* 텍스트 형태의 버튼 */}
+            <TextButtonBar className="social-links-text" links={social} />          {/* 텍스트 형태의 버튼 */}
           </div>
         </div>
       ) : (

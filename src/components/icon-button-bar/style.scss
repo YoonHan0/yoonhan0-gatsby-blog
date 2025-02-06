@@ -1,4 +1,5 @@
 @use '../../styles/variables'as *;
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .icon {
     font-size: 20px;
@@ -19,7 +20,8 @@
 
 .link-button {
   text-transform: none; /* 텍스트 대소문자 자동 변환 방지 */
-  font-size: 18px !important; /* 글자 크기 강제 적용 */
+  font-size: 22px !important; /* 글자 크기 강제 적용 */
+  font-family: 'Do Hyeon', sans-serif;
   color: black !important; /* 글자 색상 강제 적용 */
 }
 .link-button:hover {

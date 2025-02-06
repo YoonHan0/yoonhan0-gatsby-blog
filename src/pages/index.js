@@ -9,8 +9,9 @@ import { getUniqueCategories } from '../utils/helpers';
 import PostTabs from '../components/post-tabs';
 
 function HomePage({ data }) {
-  console.log("### src/pages/index.js data ### \n", data);
   const posts = data.allMarkdownRemark.edges.map(({ node }) => new Post(node));
+  console.log("### src/pages/index.js data ### \n", data);
+  console.log("### date 확인 ### \n", posts);
   const { author, language } = data.site.siteMetadata;
   const categories = ['All', ...getUniqueCategories(posts)];                                // main 화면의 카테고리가 담기는 변수
   const featuredTabIndex = categories.findIndex((category) => category === 'featured');
