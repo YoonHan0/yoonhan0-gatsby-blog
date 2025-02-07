@@ -13,7 +13,47 @@ categories: 블로그 featured 테스트2 테스트3 테스트4 테스트5 테�
 2. 메인페이지에서 사용되던 more 버튼 제거, post 중 All을 제외한 카테고리에서 사용
 3. posts에서 확인되는 글 목록에서 태그가 여러 건이 됐을 때 그리드 깨짐![post-tag-list-error](post-tag-list-error.png)태그가 5개 이상이 되면 `...` 처리하도록 수정![post-tag-list-answer](post-tag-list-answer.png)
 4. 태그가 여러 건이 있을 때 글 내부에서 그리드 깨짐
-![post-tag-description-error](post-tag-description-error.png)</br></br>화면 끝에 다다르면 다음 줄로 정렬되도록 수정![post-tag-description-answer](post-tag-description-answer.png)
+![post-tag-description-error](post-tag-description-error.png)</br></br>화면 끝에 다다르면 다음 줄로 정렬되도록 수정![post-tag-description-answer](post-tag-description-answer.png)<br/><br/>
+5. 포스터 미리보기에 나타나는 일자를 영어 표기에서 한글 표기로 수정![post-card-date-en](post-card-date-en.png) 토스였나 배민이었나 회사 기술 블로그에 게시 일자를 한글로 표기했었는데 더 내 스타일인 것 같아 한글로 수정![post-card-date-kr](post-card-date-kr.png)
+<details>
+  <summary>수정된 코드 보기</summary>
+
+  ```jsx
+  // post-card\index.js
+  import ...
+  import "moment/locale/ko";    // 한글 지원을 위한 import
+  ...
+
+  function PostCard({ post }) {
+  const { id, slug, title, excerpt, date, categories } = post;
+  
+  const formmatedDate = moment(date).format("YYYY년 MM월 DD일");  // 원하는 포맷으로 설정
+
+  return (
+    <div className="post-card-wrapper">
+      <Link className="post-card" key={id} to={slug}>
+        <div className="title">{title}</div>
+        <p className="description" dangerouslySetInnerHTML={{ __html: excerpt }} />
+        <div className="info">
+          <div className="date">{formmatedDate}</div>
+          <div className="categories">
+            {
+              categories.slice(0, 5).map((category) => (
+                <Link className="category" key={category} to={`/posts/${category}`}>
+                  {category}
+                </Link>
+              ))
+            }
+            { categories.length > 5 && '...' }
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+}
+export default PostCard;
+```
+</details>
 
 </br>
 
