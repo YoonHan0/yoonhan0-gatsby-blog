@@ -7,7 +7,7 @@
   width: 100%;
   height: 62px;
   margin-top: auto;
-  background-color: #f8f9fa;
+  background-color: var(--background-color) !important;
 
   .page-footer {
     @include content-max-width;

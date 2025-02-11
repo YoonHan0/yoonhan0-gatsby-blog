@@ -38,6 +38,9 @@ a {
     color: var(--primary-text-color);
     @include content-horizontal-padding;
 
+    .page-header{
+        background-color: var(--background-color) !important;
+    }
     .page-content {
         display: flex;
         flex-direction: column;
