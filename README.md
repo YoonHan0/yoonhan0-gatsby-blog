@@ -1,6 +1,10 @@
 <h1 align="center">
-  Zoomkoding Gatsby Blog
+  YoonHan0 Gatsby Blog
 </h1>
+
+<p align="center" style="font-size: 12px;">
+  Inspired by Zoomkoding
+</p>
 
 <p align="center">
   <a href="https://github.com/zoomkoding/zoomkoding-gatsby-blog/blob/master/LICENSE">
