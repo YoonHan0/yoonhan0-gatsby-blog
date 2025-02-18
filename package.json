@@ -62,5 +62,8 @@
   },
   "bugs": {
     "url": "https://github.com/YoonHan0/yoonhan0-gatsby-blog/issues"
+  },
+  "volta": {
+    "node": "18.20.6"
   }
 }
