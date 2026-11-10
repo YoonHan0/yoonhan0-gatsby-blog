@@ -7,11 +7,15 @@ import Post from '../models/post';
 
 import { getUniqueCategories } from '../utils/helpers';
 import PostTabs from '../components/post-tabs';
+import SectionHeader from '../components/section-header';
+import ProjectCard from '../components/project-card';
+import Project from '../models/project';
 
 function HomePage({ data }) {
   const posts = data.allMarkdownRemark.edges.map(({ node }) => new Post(node));
   console.log("### src/pages/index.js data ### \n", data);
   console.log("### date 확인 ### \n", posts);
+  const featuredProjects = data.featuredProjects.nodes.map((node) => new Project(node));
   const { author, language } = data.site.siteMetadata;
   const categories = ['All', ...getUniqueCategories(posts)];                                // main 화면의 카테고리가 담기는 변수
   const featuredTabIndex = categories.findIndex((category) => category === 'featured');
@@ -22,6 +26,16 @@ function HomePage({ data }) {
     <Layout>    {/* 아래 3개의 컴포넌트는 layout/index.js의 children에 해당하는 부분들 */}
       <Seo title="YoonHan0" />
       <Bio author={author} language={language} />
+      {featuredProjects.length > 0 && (
+        <>
+          <SectionHeader title="Featured Projects" />
+          <div className="project-card-list">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </>
+      )}
       <PostTabs
         posts={posts}
         onChange={onTabIndexChange}
@@ -36,7 +50,37 @@ export default HomePage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    featuredProjects: allMarkdownRemark(
+      filter: { fields: { contentType: { eq: "project" } }, frontmatter: { featured: { eq: true } } }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 4
+    ) {
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          emoji
+          projectType
+          company
+          period
+          summary
+          techStack
+          featured
+          thumbnail {
+            childImageSharp {
+              gatsbyImageData(layout: CONSTRAINED, width: 720, aspectRatio: 1.7778)
+            }
+          }
+        }
+      }
+    }
+    allMarkdownRemark(
+            filter: { fields: { contentType: { eq: "post" } } }
+            sort: { fields: frontmatter___date, order: DESC }
+          ) {
       edges {
         node {
           id

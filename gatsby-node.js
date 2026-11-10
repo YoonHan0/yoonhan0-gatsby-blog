@@ -1,11 +1,68 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+/**
+ * content/posts/**    → contentType: 'post'    , slug: /<폴더명>/  (기존 URL 유지)
+ * content/projects/** → contentType: 'project' , slug: /projects/<폴더명>/
+ */
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `content` });
+    const filePath = createFilePath({ node, getNode, basePath: `content` }); // e.g. /posts/foo/
+    const isProject = filePath.startsWith('/projects/');
+    const slug = isProject ? filePath : filePath.replace(/^\/posts\//, '/');
     createNodeField({ node, name: `slug`, value: slug });
+    createNodeField({ node, name: `contentType`, value: isProject ? 'project' : 'post' });
   }
+};
+
+/** 프로젝트 글이 하나도 없어도 쿼리가 깨지지 않도록 frontmatter 스키마를 명시 */
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      fields: MarkdownRemarkFields
+    }
+    type MarkdownRemarkFields {
+      slug: String
+      contentType: String
+    }
+    type Frontmatter {
+      title: String
+      date: Date @dateformat
+      emoji: String
+      author: String
+      tags: String
+      categories: String
+      projectType: String
+      company: String
+      period: String
+      role: String
+      team: String
+      summary: String
+      techStack: [String]
+      featured: Boolean
+      thumbnail: File @fileByRelativePath
+      links: ProjectLinks
+    }
+    type ProjectLinks {
+      github: String
+      demo: String
+      post: String
+      googlePlay: String
+      appStore: String
+    }
+  `);
+};
+
+const createProjectPages = ({ createPage, projects }) => {
+  const projectTemplate = require.resolve(`./src/templates/project-template.js`);
+  projects.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: projectTemplate,
+      context: { slug: node.fields.slug },
+    });
+  });
 };
 
 const createBlogPages = ({ createPage, results }) => {
@@ -60,7 +117,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const results = await graphql(`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+      projects: allMarkdownRemark(filter: { fields: { contentType: { eq: "project" } } }) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allMarkdownRemark(
+        filter: { fields: { contentType: { eq: "post" } } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
         edges {
           node {
             id
@@ -97,4 +167,5 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   createBlogPages({ createPage, results });
   createPostsPages({ createPage, results });
+  createProjectPages({ createPage, projects: results.data.projects.edges });
 };

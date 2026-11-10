@@ -9,7 +9,10 @@ function PageHeader({ siteTitle }) {
     <StaticQuery
       query={graphql`
         query SearchIndexQuery {
-          allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+          allMarkdownRemark(
+            filter: { fields: { contentType: { eq: "post" } } }
+            sort: { fields: frontmatter___date, order: DESC }
+          ) {
             edges {
               node {
                 frontmatter {
@@ -35,6 +38,9 @@ function PageHeader({ siteTitle }) {
             <div className="trailing-section">
               <Link className="link" to="/about">
                 about
+              </Link>
+              <Link className="link" to="/projects">
+                projects
               </Link>
               <Link className="link" to="/posts">
                 posts

@@ -18,6 +18,7 @@ module.exports = {
       options: {
         name: `content`,
         path: `${__dirname}/content`,
+        ignore: [`**/_*`, `**/_*/**`], // _로 시작하는 폴더/파일(템플릿 등)은 제외
       },
     },
     {
