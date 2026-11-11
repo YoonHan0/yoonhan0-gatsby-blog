@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .post-card-wrapper {
-  min-height: 150px;
+  
   width: 100%;
   display: flex;
   justify-content: center;
@@ -52,7 +52,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       /* number of lines to show */
       -webkit-box-orient: vertical;
     }

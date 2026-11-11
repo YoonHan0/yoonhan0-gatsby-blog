@@ -73,7 +73,12 @@
         padding: 2px 8px;
         border-radius: 8px;
         font-size: 13px;
+        color: var(--content-text-color);
         background-color: var(--chip-background-color);
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

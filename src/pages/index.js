@@ -7,7 +7,6 @@ import Post from '../models/post';
 
 import { getUniqueCategories } from '../utils/helpers';
 import PostTabs from '../components/post-tabs';
-import SectionHeader from '../components/section-header';
 import ProjectCard from '../components/project-card';
 import Project from '../models/project';
 
@@ -27,14 +26,14 @@ function HomePage({ data }) {
       <Seo title="YoonHan0" />
       <Bio author={author} language={language} />
       {featuredProjects.length > 0 && (
-        <>
-          <SectionHeader title="Featured Projects" />
+        <section className="featured-projects">
+          <div className="featured-projects-title">주요 프로젝트</div>
           <div className="project-card-list">
             {featuredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
-        </>
+        </section>
       )}
       <PostTabs
         posts={posts}
@@ -84,10 +83,11 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 500, truncate: true)
           frontmatter {
             categories
+            tags
             title
+            description
             date(formatString: "MMMM DD, YYYY")
           }
           fields {

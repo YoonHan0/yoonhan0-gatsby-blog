@@ -25,3 +25,31 @@
     text-align: center;
   }
 }
+/* /posts?tag=... 태그 검색 시 표시되는 안내 바 */
+.tag-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: var(--chip-background-color);
+  color: var(--content-text-color);
+
+  a {
+    flex-shrink: 0;
+    color: var(--secondary-text-color);
+
+    &:hover {
+      color: var(--primary-text-color);
+    }
+  }
+}
+
+.tag-filter-empty {
+  width: 100%;
+  color: var(--secondary-text-color);
+}

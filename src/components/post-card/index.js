@@ -5,7 +5,7 @@ import "moment/locale/ko";
 import './style.scss';
 
 function PostCard({ post }) {
-  const { id, slug, title, excerpt, date, categories } = post;
+  const { id, slug, title, description, date, categories } = post;
   
   const formmatedDate = moment(date).format("YYYY년 MM월 DD일");
 
@@ -13,7 +13,8 @@ function PostCard({ post }) {
     <div className="post-card-wrapper">
       <Link className="post-card" key={id} to={slug}>
         <div className="title">{title}</div>
-        <p className="description" dangerouslySetInnerHTML={{ __html: excerpt }} />
+        {/* 본문 대신 frontmatter의 description(한 문장 요약)만 표시 */}
+        {description && <p className="description">{description}</p>}
         <div className="info">
           <div className="date">{formmatedDate}</div>
           <div className="categories">

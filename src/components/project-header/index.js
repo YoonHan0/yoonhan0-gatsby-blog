@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { PROJECT_TYPE_LABEL } from '../../models/project';
 import IconButtonBar from '../icon-button-bar';
+import { tagUrl } from '../../utils/tag';
 import './style.scss';
 
 function ProjectHeader({ project }) {
@@ -34,9 +35,9 @@ function ProjectHeader({ project }) {
             <dt>기술 스택</dt>
             <dd className="tech-stack">
               {techStack.map((tech) => (
-                <span className="tech" key={tech}>
+                <Link className="tech" key={tech} to={tagUrl(tech)} title={`'${tech}' 관련 글 보기`}>
                   {tech}
-                </span>
+                </Link>
               ))}
             </dd>
           </>

@@ -28,10 +28,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type Frontmatter {
       title: String
+      description: String
       date: Date @dateformat
       emoji: String
       author: String
-      tags: String
+      tags: [String]
       categories: String
       projectType: String
       company: String
@@ -134,13 +135,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             id
-            excerpt(pruneLength: 500, truncate: true)
             fields {
               slug
             }
             frontmatter {
               categories
+              tags
               title
+              description
               date(formatString: "MMMM DD, YYYY")
             }
           }

@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import { tagUrl } from '../../utils/tag';
 import './style.scss';
 
 function PostHeader({ post }) {
@@ -25,6 +26,15 @@ function PostHeader({ post }) {
         </div>{' '}
         {post.date}
       </div>
+      {post.tags.length > 0 && (
+        <div className="tags">
+          {post.tags.map((tag) => (
+            <Link className="tag" key={tag} to={tagUrl(tag)}>
+              #{tag}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 }

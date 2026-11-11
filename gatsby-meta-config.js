@@ -50,7 +50,7 @@ module.exports = {
         date: '2025.01 ~',
         activity: '개인 블로그 개발 및 운영',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
+          post: '',
           github: 'https://github.com/YoonHan0/yoonhan0-blog',
           demo: 'https://www.yoonhan0.com',
         },
